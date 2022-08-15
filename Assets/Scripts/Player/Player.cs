@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using Animancer;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] PlayerActions playerActions;
     [SerializeField] PlayerAudio playerAudio;
+    [SerializeField] Collider2D cleets;
     [SerializeField] Stats stats;
     [SerializeField] Animations animations;
 
@@ -22,7 +24,6 @@ public class Player : MonoBehaviour
     ContactFilter2D _groundMask;
 
     float _jumpInputTimestamp = float.NegativeInfinity;
-
     bool _isGrounded;
     bool _isJumping;
     float _jumpingTimestamp;
@@ -41,6 +42,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerActions.actions.Player.Jump.performed += (_) => _jumpInputTimestamp = Time.time;
+        playerActions.actions.Player.Restart.performed += 
+            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);;
     }
 
     void FixedUpdate()
@@ -133,13 +136,18 @@ public class Player : MonoBehaviour
 
         if (_isGrounded && Time.time - _jumpInputTimestamp < stats.jumpInputBuffer)
         {
-            _isJumping = true;
-            _jumpingTimestamp = Time.time;
-            _jumpInputTimestamp = 0;
-            _body.velocity = new Vector2(_body.velocity.x, 0);
-            _body.AddForce(new Vector2(0, stats.jumpForce), ForceMode2D.Impulse);
-            playerAudio.Jump();
+            Jump();
         }
+    }
+
+    public void Jump()
+    {
+        _isJumping = true;
+        _jumpingTimestamp = Time.time;
+        _jumpInputTimestamp = 0;
+        _body.velocity = new Vector2(_body.velocity.x, 0);
+        _body.AddForce(new Vector2(0, stats.jumpForce), ForceMode2D.Impulse);
+        playerAudio.Jump();
     }
 
     void UpdateDirection()
@@ -173,12 +181,15 @@ public class Player : MonoBehaviour
 
     IEnumerator CO_Die()
     {
-        // _body.bodyType = RigidbodyType2D.Kinematic;
-        // playerActions.DisableControls();
+        transform.Rotate(0, 0, 90);
+        _collider.enabled = false;
+        if (cleets) cleets.enabled = false;
+        _body.bodyType = RigidbodyType2D.Kinematic;
+        playerActions.DisableControls();
         // var state = _animancer.Play(animations.die);
         // yield return state;
 
-        yield return null;
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
