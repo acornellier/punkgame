@@ -6,8 +6,6 @@ public class Killzone : MonoBehaviour
     {
         var player = col.GetComponent<Player>();
         if (player)
-            player.Die();
-        else
-            Destroy(col.gameObject);
+            player.Respawn();
     }
 }

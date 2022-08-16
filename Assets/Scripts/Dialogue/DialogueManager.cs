@@ -1,23 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject wrapper;
+    [SerializeField] Image talkingHead;
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text contents;
     [SerializeField] PlayerActions playerActions;
     [SerializeField] float speed;
+    [SerializeField] float talkingSpeed;
 
+    Dialogue _currentDialogue;
     Queue<string> _lines;
     string _currentLine;
     Coroutine _coroutine;
 
     public void StartDialogue(Dialogue dialogue)
     {
+        _currentDialogue = dialogue;
+
         playerActions.DisablePlayerControls();
         playerActions.actions.Dialogue.Enable();
         playerActions.actions.Dialogue.Next.performed += OnNextInput;
@@ -28,7 +36,7 @@ public class DialogueManager : MonoBehaviour
         TypeNextLine();
     }
 
-    public void StopDialogue()
+    void StopDialogue()
     {
         playerActions.actions.Dialogue.Disable();
         playerActions.EnablePlayerControls();
@@ -64,14 +72,23 @@ public class DialogueManager : MonoBehaviour
         _currentLine = _lines.Dequeue();
         contents.text = string.Empty;
 
-        var t = 0f;
+        var textTime = 0f;
         var charIndex = 0;
+        var spriteTime = 0f;
         while (charIndex < _currentLine.Length)
         {
-            t += Time.deltaTime * speed;
-            charIndex = Mathf.CeilToInt(t);
+            textTime += Time.deltaTime * speed;
+            charIndex = Mathf.Clamp(Mathf.CeilToInt(textTime), 0, _currentLine.Length);
             contents.text = _currentLine[..charIndex];
+
+            spriteTime += Time.deltaTime * talkingSpeed;
+            talkingHead.sprite = Mathf.Floor(spriteTime) % 2 == 0
+                ? _currentDialogue.mouthClosedSprite
+                : _currentDialogue.mouthOpenSprite;
+
             yield return null;
         }
+
+        talkingHead.sprite = _currentDialogue.mouthClosedSprite;
     }
 }

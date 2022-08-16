@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using System.IO;
 using Animancer;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using Zenject;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] Stats stats;
     [SerializeField] Animations animations;
 
+    [Inject] CheckpointManager _checkpointManager;
+
     Collider2D _collider;
     Rigidbody2D _body;
     AnimancerComponent _animancer;
@@ -26,8 +26,9 @@ public class Player : MonoBehaviour
     float _jumpInputTimestamp = float.NegativeInfinity;
     bool _isGrounded;
     bool _isJumping;
-    float _jumpingTimestamp;
+    float _jumpingTimestamp = float.NegativeInfinity;
     bool _isFalling;
+    float _landTimestamp = float.NegativeInfinity;
 
     readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[8];
 
@@ -42,8 +43,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerActions.actions.Player.Jump.performed += (_) => _jumpInputTimestamp = Time.time;
-        playerActions.actions.Player.Restart.performed += 
-            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);;
+        playerActions.actions.Player.Restart.performed +=
+            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ;
     }
 
     void FixedUpdate()
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         UpdateRunning();
         UpdateJumping();
         UpdateDirection();
-        // UpdateAnimations();
+        UpdateAnimations();
     }
 
     public void DisableControlsAndStopAnimancer()
@@ -95,7 +97,7 @@ public class Player : MonoBehaviour
             var acceleration = velocityDirection == Math.Sign(moveInput)
                 ? stats.acceleration
                 : stats.turnAcceleration;
-            
+
             velocity.x += moveInput * acceleration * Time.fixedDeltaTime;
             velocity.x = Mathf.Clamp(velocity.x, -stats.maxSpeed, stats.maxSpeed);
         }
@@ -131,13 +133,12 @@ public class Player : MonoBehaviour
         {
             _isFalling = false;
             _isJumping = false;
+            _landTimestamp = Time.time;
             playerAudio.Land();
         }
 
         if (_isGrounded && Time.time - _jumpInputTimestamp < stats.jumpInputBuffer)
-        {
             Jump();
-        }
     }
 
     public void Jump()
@@ -168,6 +169,8 @@ public class Player : MonoBehaviour
             _animancer.Play(animations.fall);
         else if (_isJumping)
             _animancer.Play(animations.jump);
+        else if (Time.time - _landTimestamp < 0.2f)
+            _animancer.Play(animations.land);
         else if (Mathf.Abs(_body.velocity.x) > 0.01)
             _animancer.Play(animations.walk);
         else
@@ -190,7 +193,19 @@ public class Player : MonoBehaviour
         // yield return state;
 
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        transform.Rotate(0, 0, -90);
+        _collider.enabled = true;
+        if (cleets) cleets.enabled = true;
+        _body.bodyType = RigidbodyType2D.Dynamic;
+        playerActions.EnablePlayerControls();
+
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        transform.position = _checkpointManager.CurrentCheckpoint.position;
     }
 
     [Serializable]
@@ -200,7 +215,7 @@ public class Player : MonoBehaviour
         public float turnAcceleration = 5;
         public float acceleration = 5;
         public float deceleration = 5;
-        
+
         public float jumpForce = 8;
         public float gravityForce = 1;
         public float fallingGravityMultiplier = 1.2f;
@@ -214,6 +229,7 @@ public class Player : MonoBehaviour
         public AnimationClip walk;
         public AnimationClip jump;
         public AnimationClip fall;
+        public AnimationClip land;
         public AnimationClip die;
     }
 }

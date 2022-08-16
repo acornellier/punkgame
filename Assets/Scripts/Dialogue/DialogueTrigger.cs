@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [SerializeField] bool triggerOnStart;
     [SerializeField] Dialogue dialogue;
 
     DialogueManager _dialogueManager;
@@ -13,6 +14,11 @@ public class DialogueTrigger : MonoBehaviour
         _dialogueManager = FindObjectOfType<DialogueManager>();
         if (!_dialogueManager)
             throw new Exception("Could not find DialogueManager");
+    }
+
+    void Start()
+    {
+        if (triggerOnStart) Trigger();
     }
 
     void Update()
