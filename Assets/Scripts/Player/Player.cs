@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
 
     public void DisableControlsAndStopAnimancer()
     {
-        playerActions.DisableControls();
+        playerActions.DisablePlayerControls();
         _animancer.Stop();
     }
 
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
         _collider.enabled = false;
         if (cleets) cleets.enabled = false;
         _body.bodyType = RigidbodyType2D.Kinematic;
-        playerActions.DisableControls();
+        playerActions.DisablePlayerControls();
         // var state = _animancer.Play(animations.die);
         // yield return state;
 

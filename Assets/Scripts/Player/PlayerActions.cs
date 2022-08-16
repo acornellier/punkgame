@@ -11,20 +11,20 @@ public class PlayerActions : MonoBehaviour
 
     void OnEnable()
     {
-        EnableControls();
+        EnablePlayerControls();
     }
 
     void OnDisable()
     {
-        DisableControls();
+        DisablePlayerControls();
     }
 
-    public void EnableControls()
+    public void EnablePlayerControls()
     {
         actions.Player.Enable();
     }
 
-    public void DisableControls()
+    public void DisablePlayerControls()
     {
         actions.Player.Disable();
     }
