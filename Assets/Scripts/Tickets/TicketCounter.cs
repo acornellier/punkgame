@@ -8,18 +8,23 @@ public class TicketCounter : MonoBehaviour
 
     [Inject] TicketManager _ticketManager;
 
+    void Start()
+    {
+        UpdateText();
+    }
+
     void OnEnable()
     {
-        _ticketManager.OnTicketCaught += OnTicketCaught;
+        _ticketManager.OnTicketCaught += UpdateText;
     }
 
     void OnDisable()
     {
-        _ticketManager.OnTicketCaught -= OnTicketCaught;
+        _ticketManager.OnTicketCaught -= UpdateText;
     }
 
-    void OnTicketCaught()
+    void UpdateText()
     {
-        text.text = _ticketManager.TicketsCaught.ToString();
+        text.text = $"{_ticketManager.TicketsCaught.ToString()} / {_ticketManager.TotalTickets}";
     }
 }

@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     bool _isFalling;
     float _landTimestamp = float.NegativeInfinity;
 
+    bool _isDead;
+
     readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[8];
 
     void Awake()
@@ -43,13 +45,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerActions.actions.Player.Jump.performed += (_) => _jumpInputTimestamp = Time.time;
-        playerActions.actions.Player.Restart.performed +=
-            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        ;
+        playerActions.actions.Player.Respawn.performed += (_) => Respawn();
     }
 
     void FixedUpdate()
     {
+        if (_isDead) return;
+
         UpdateGrounded();
         UpdateRunning();
         UpdateJumping();
@@ -184,20 +186,24 @@ public class Player : MonoBehaviour
 
     IEnumerator CO_Die()
     {
+        _isDead = true;
         transform.Rotate(0, 0, 90);
         _collider.enabled = false;
         if (cleets) cleets.enabled = false;
         _body.bodyType = RigidbodyType2D.Kinematic;
+        _body.constraints = RigidbodyConstraints2D.FreezeAll;
         playerActions.DisablePlayerControls();
         // var state = _animancer.Play(animations.die);
         // yield return state;
 
         yield return new WaitForSeconds(1);
 
+        _isDead = false;
         transform.Rotate(0, 0, -90);
         _collider.enabled = true;
         if (cleets) cleets.enabled = true;
         _body.bodyType = RigidbodyType2D.Dynamic;
+        _body.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerActions.EnablePlayerControls();
 
         Respawn();

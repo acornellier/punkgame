@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -12,11 +13,21 @@ public class PlayerActions : MonoBehaviour
     void OnEnable()
     {
         EnablePlayerControls();
+
+        actions.Debug.Enable();
+        actions.Debug.Restart.performed +=
+            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        actions.Debug.LoadPrev.performed +=
+            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        actions.Debug.LoadNext.performed +=
+            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnDisable()
     {
         DisablePlayerControls();
+
+        actions.Debug.Disable();
     }
 
     public void EnablePlayerControls()

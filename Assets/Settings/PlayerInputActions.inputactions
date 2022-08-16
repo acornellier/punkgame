@@ -24,9 +24,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Restart",
+                    "name": "Respawn",
                     "type": "Button",
-                    "id": "03afd09c-9c0a-4f81-8ebe-e08ee8820226",
+                    "id": "73f84dfd-8122-4138-a728-8ac0a2462169",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -124,12 +124,12 @@
                 },
                 {
                     "name": "",
-                    "id": "2f4d288e-d5ad-4d78-ba39-f627cb54a35b",
+                    "id": "7cd5a1ed-cdce-4849-92be-7d598d5546a9",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Restart",
+                    "action": "Respawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -674,6 +674,85 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce42f05f-2517-4b1d-8048-c753f4b6fe12",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Debug",
+            "id": "18e3044f-ad08-43e4-be03-b548c9dc75b4",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "96e2d8e5-c701-4b49-abdc-c38fdbb9c6b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LoadNext",
+                    "type": "Button",
+                    "id": "f493436f-b31b-4f43-a918-c4655a622e35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LoadPrev",
+                    "type": "Button",
+                    "id": "a7f9a4e7-5dbc-442c-83cd-1fe5c08c14f2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "692601d5-7229-44ea-9d5c-9cb3af381262",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77972123-51bf-476a-a9f0-45505cdfe9af",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "LoadNext",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5eec0c8d-7b29-40c1-976e-234d88326fb5",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "LoadPrev",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

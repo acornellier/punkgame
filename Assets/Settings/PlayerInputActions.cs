@@ -46,9 +46,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Restart"",
+                    ""name"": ""Respawn"",
                     ""type"": ""Button"",
-                    ""id"": ""03afd09c-9c0a-4f81-8ebe-e08ee8820226"",
+                    ""id"": ""73f84dfd-8122-4138-a728-8ac0a2462169"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -146,12 +146,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2f4d288e-d5ad-4d78-ba39-f627cb54a35b"",
+                    ""id"": ""7cd5a1ed-cdce-4849-92be-7d598d5546a9"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Restart"",
+                    ""action"": ""Respawn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -698,6 +698,85 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce42f05f-2517-4b1d-8048-c753f4b6fe12"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""18e3044f-ad08-43e4-be03-b548c9dc75b4"",
+            ""actions"": [
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""96e2d8e5-c701-4b49-abdc-c38fdbb9c6b3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LoadNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""f493436f-b31b-4f43-a918-c4655a622e35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LoadPrev"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7f9a4e7-5dbc-442c-83cd-1fe5c08c14f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""692601d5-7229-44ea-9d5c-9cb3af381262"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77972123-51bf-476a-a9f0-45505cdfe9af"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LoadNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5eec0c8d-7b29-40c1-976e-234d88326fb5"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""LoadPrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -769,7 +848,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Restart = m_Player.FindAction("Restart", throwIfNotFound: true);
+        m_Player_Respawn = m_Player.FindAction("Respawn", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -785,6 +864,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_Next = m_Dialogue.FindAction("Next", throwIfNotFound: true);
+        // Debug
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_Restart = m_Debug.FindAction("Restart", throwIfNotFound: true);
+        m_Debug_LoadNext = m_Debug.FindAction("LoadNext", throwIfNotFound: true);
+        m_Debug_LoadPrev = m_Debug.FindAction("LoadPrev", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -846,14 +930,14 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Restart;
+    private readonly InputAction m_Player_Respawn;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Restart => m_Wrapper.m_Player_Restart;
+        public InputAction @Respawn => m_Wrapper.m_Player_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -869,9 +953,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Restart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
-                @Restart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
-                @Restart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Respawn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -882,9 +966,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Restart.started += instance.OnRestart;
-                @Restart.performed += instance.OnRestart;
-                @Restart.canceled += instance.OnRestart;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
             }
         }
     }
@@ -1027,6 +1111,55 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public DialogueActions @Dialogue => new DialogueActions(this);
+
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_Restart;
+    private readonly InputAction m_Debug_LoadNext;
+    private readonly InputAction m_Debug_LoadPrev;
+    public struct DebugActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public DebugActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Restart => m_Wrapper.m_Debug_Restart;
+        public InputAction @LoadNext => m_Wrapper.m_Debug_LoadNext;
+        public InputAction @LoadPrev => m_Wrapper.m_Debug_LoadPrev;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
+        {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+            {
+                @Restart.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnRestart;
+                @Restart.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnRestart;
+                @Restart.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnRestart;
+                @LoadNext.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadNext;
+                @LoadNext.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadNext;
+                @LoadNext.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadNext;
+                @LoadPrev.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadPrev;
+                @LoadPrev.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadPrev;
+                @LoadPrev.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadPrev;
+            }
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Restart.started += instance.OnRestart;
+                @Restart.performed += instance.OnRestart;
+                @Restart.canceled += instance.OnRestart;
+                @LoadNext.started += instance.OnLoadNext;
+                @LoadNext.performed += instance.OnLoadNext;
+                @LoadNext.canceled += instance.OnLoadNext;
+                @LoadPrev.started += instance.OnLoadPrev;
+                @LoadPrev.performed += instance.OnLoadPrev;
+                @LoadPrev.canceled += instance.OnLoadPrev;
+            }
+        }
+    }
+    public DebugActions @Debug => new DebugActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1076,7 +1209,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnRestart(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1094,5 +1227,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IDialogueActions
     {
         void OnNext(InputAction.CallbackContext context);
+    }
+    public interface IDebugActions
+    {
+        void OnRestart(InputAction.CallbackContext context);
+        void OnLoadNext(InputAction.CallbackContext context);
+        void OnLoadPrev(InputAction.CallbackContext context);
     }
 }
