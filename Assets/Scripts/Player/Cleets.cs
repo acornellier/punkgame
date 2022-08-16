@@ -22,6 +22,6 @@ public class Cleets : MonoBehaviour
             return;
 
         enemy.Die();
-        player.Jump();
+        player.Jump(0.5f);
     }
 }

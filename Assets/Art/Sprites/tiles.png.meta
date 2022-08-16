@@ -951,7 +951,11 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 1}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 7}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 7}
       tessellationDetail: 0
       bones: []
       spriteID: e4938700a35b1a8439e9705fe54921c9
@@ -1602,8 +1606,8 @@ TextureImporter:
       tiles_13: -997263682
       tiles_59: 994424833
       tiles_2: 1706742196
-      tiles_17: 218933634
       tiles_29: -1311692275
+      tiles_17: 218933634
       tiles_7: -749985667
       tiles_9: 2024722932
       tiles_38: -727361576

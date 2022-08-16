@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
             Jump();
     }
 
-    public void Jump()
+    public void Jump(float multiplier = 1f)
     {
         _isJumping = true;
         _jumpingTimestamp = Time.time;

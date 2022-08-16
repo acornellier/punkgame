@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         if (_dead)
         {
             _body.bodyType = RigidbodyType2D.Kinematic;
-            _body.velocity = speed * Vector2.down;
+            _body.velocity = 2 * speed * Vector2.down;
             transform.Rotate(0, 0, 10);
             return;
         }
