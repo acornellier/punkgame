@@ -948,7 +948,7 @@ Transform:
   - {fileID: 515278276}
   - {fileID: 927985787731168255}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2385465054494195551
 BoxCollider2D:
@@ -1409,7 +1409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8886115538415708171, guid: fa450dd674e59db4a8fe18065c236f45, type: 3}
       propertyPath: m_Name
-      value: LevelEnd
+      value: LevelLoader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

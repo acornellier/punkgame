@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Zenject;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] PlayerActions playerActions;
     [SerializeField] float speed;
     [SerializeField] float talkingSpeed;
+
+    [Inject] LevelLoader _levelLoader;
 
     Dialogue _currentDialogue;
     Queue<string> _lines;

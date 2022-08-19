@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class PlayerActions : MonoBehaviour
 {
     public PlayerInputActions actions;
+
+    [Inject] LevelLoader _levelLoader;
 
     void Awake()
     {
@@ -16,11 +19,11 @@ public class PlayerActions : MonoBehaviour
 
         actions.Debug.Enable();
         actions.Debug.Restart.performed +=
-            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            (_) => _levelLoader.LoadScene(SceneManager.GetActiveScene().buildIndex);
         actions.Debug.LoadPrev.performed +=
-            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            (_) => _levelLoader.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         actions.Debug.LoadNext.performed +=
-            (_) => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            (_) => _levelLoader.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     void OnDisable()

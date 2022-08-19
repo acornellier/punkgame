@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8886115538415708168}
   - component: {fileID: 8886115538415708166}
   m_Layer: 0
-  m_Name: LevelEnd
+  m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8886115538415708168
 BoxCollider2D:
@@ -71,3 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807f782fda534eeb8332c6893a115783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenTransitionMaterial: {fileID: 2100000, guid: 0202c7da33a85c34bad7b854e59e5fba, type: 2}
+  progressProperty: _Progress
+  flipProperty: _Flip
+  transitionTime: 0.6
+  isLoaded: 0

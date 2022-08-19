@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 public class DialogueTrigger : MonoBehaviour
@@ -12,12 +11,6 @@ public class DialogueTrigger : MonoBehaviour
     void Start()
     {
         if (triggerOnStart) Trigger();
-    }
-
-    void Update()
-    {
-        if (Keyboard.current.fKey.IsPressed())
-            Trigger();
     }
 
     void Trigger()

@@ -10,5 +10,7 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<CheckpointManager>().AsSingle();
         Container.BindInterfacesAndSelfTo<TicketManager>().AsSingle();
+
+        Container.Bind<LevelLoader>().FromComponentInHierarchy().AsSingle();
     }
 }
