@@ -948,7 +948,7 @@ Transform:
   - {fileID: 515278276}
   - {fileID: 927985787731168255}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2385465054494195551
 BoxCollider2D:
@@ -1247,7 +1247,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.875}
+  m_Size: {x: 1, y: 20}
   m_EdgeRadius: 0
 --- !u!114 &1081466393097586241
 MonoBehaviour:

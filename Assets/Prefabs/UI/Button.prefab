@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK
+  m_text: resume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 767fc346d93b53e4798d44223b79e7e8, type: 2}
   m_sharedMaterial: {fileID: -6926324333187728428, guid: 767fc346d93b53e4798d44223b79e7e8, type: 2}
@@ -94,7 +94,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 32
-  m_fontSizeBase: 50
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -205,8 +205,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1354976060, guid: f3ad55613b46bb24ba5d3674c45a0c65, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: -385499714, guid: a549d711929414f18a023cc8986a9d6c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 2
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -244,10 +244,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1354976060, guid: f3ad55613b46bb24ba5d3674c45a0c65, type: 3}
-    m_PressedSprite: {fileID: 1753348556, guid: f3ad55613b46bb24ba5d3674c45a0c65, type: 3}
-    m_SelectedSprite: {fileID: -1109979242, guid: f3ad55613b46bb24ba5d3674c45a0c65, type: 3}
-    m_DisabledSprite: {fileID: -566832767, guid: f3ad55613b46bb24ba5d3674c45a0c65, type: 3}
+    m_HighlightedSprite: {fileID: -1679884365, guid: a549d711929414f18a023cc8986a9d6c, type: 3}
+    m_PressedSprite: {fileID: -1324089824, guid: a549d711929414f18a023cc8986a9d6c, type: 3}
+    m_SelectedSprite: {fileID: -914696811, guid: a549d711929414f18a023cc8986a9d6c, type: 3}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -261,7 +261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: GoBack
+        m_MethodName: GoBackOrResume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
