@@ -11,7 +11,7 @@ public class AudioManager : IInitializable
     {
         Master,
         Sound,
-        Music,
+        Music
     }
 
     public void Initialize()
@@ -23,7 +23,7 @@ public class AudioManager : IInitializable
 
     public static float GetChannelValue(AudioChannel channel)
     {
-        return PlayerPrefs.GetFloat(channel + "Volume", 0.8f);
+        return PlayerPrefs.GetFloat(channel + "Volume", channel == AudioChannel.Music ? 0.5f : 0.8f);
     }
 
     /// <param name="channel"></param>

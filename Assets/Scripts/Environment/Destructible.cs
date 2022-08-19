@@ -10,6 +10,8 @@ public class Destructible : MonoBehaviour
     [SerializeField] AnimationClip idleClip;
     [SerializeField] AnimationClip destroyClip;
     [SerializeField] Vector2 launchForce = Vector2.one;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
 
     AnimancerComponent _animancer;
     Rigidbody2D _body;
@@ -35,6 +37,7 @@ public class Destructible : MonoBehaviour
 
     IEnumerator CO_Destroy()
     {
+        audioSource.PlayOneShot(audioClip);
         var state = _animancer.Play(destroyClip);
         yield return state;
     }

@@ -152,7 +152,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1262701260633735462, guid: 83dc76bc325bf964dbd86af01ebf0981, type: 2}
   m_audioClip: {fileID: 8300000, guid: fd5c1f746a0879b49ad9d499f4a714a8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.404
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19486,7 +19486,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
@@ -19497,14 +19496,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19565,7 +19556,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7.3125
+  orthographic size: 7.15625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22471,7 +22462,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7772926, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

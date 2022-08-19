@@ -8,6 +8,9 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] AudioSource landSource;
     [SerializeField] AudioClip landClip;
 
+    [SerializeField] AudioSource dieSource;
+    [SerializeField] AudioClip dieClip;
+
     [SerializeField] AudioSource footstepSource;
     [SerializeField] AudioClip[] footstepClips;
 
@@ -19,6 +22,11 @@ public class PlayerAudio : MonoBehaviour
     public void Land()
     {
         landSource.PlayOneShot(landClip);
+    }
+
+    public void Die()
+    {
+        dieSource.PlayOneShot(dieClip);
     }
 
     public void Footstep()

@@ -186,6 +186,8 @@ public class Player : MonoBehaviour
         if (cleets) cleets.enabled = false;
         playerActions.DisablePlayerControls();
 
+        playerAudio.Die();
+
         var state = _animancer.Play(animations.die);
         yield return state;
 

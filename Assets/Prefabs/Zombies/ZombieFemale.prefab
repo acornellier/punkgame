@@ -76,6 +76,18 @@ PrefabInstance:
       propertyPath: walk
       value: 
       objectReference: {fileID: 7400000, guid: 96a8d3351eaf34aa4b2e1aa14fec7e40, type: 2}
+    - target: {fileID: 1451183300731828887, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
+      propertyPath: deathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2455cd85ecdc8436b9784b43ee088801, type: 3}
+    - target: {fileID: 1451183300731828887, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
+      propertyPath: idleClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451183300731828887, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
+      propertyPath: idleClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 78cde15a2eb0f421a82a9981ccd46741, type: 3}
     - target: {fileID: 1451183300731828888, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 2

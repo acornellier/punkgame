@@ -2,6 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AnimancerComponent))]
+[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
@@ -13,7 +14,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] AnimationClip walk;
     [SerializeField] AnimationClip die;
 
+    [SerializeField] AudioClip[] idleClips;
+    [SerializeField] AudioClip deathClip;
+
     AnimancerComponent _animancer;
+    AudioSource _audioSource;
     Collider2D _collider;
     Rigidbody2D _body;
     Player _player;
@@ -29,6 +34,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         _animancer = GetComponent<AnimancerComponent>();
+        _audioSource = GetComponent<AudioSource>();
         _collider = GetComponent<Collider2D>();
         _body = GetComponent<Rigidbody2D>();
         _player = FindObjectOfType<Player>();
@@ -42,6 +48,15 @@ public class Enemy : MonoBehaviour
         _direction = 1;
         if (startFlipped)
             Flip();
+    }
+
+    void Update()
+    {
+        if (_dead) return;
+
+        if (_audioSource.isPlaying) return;
+        _audioSource.clip = idleClips[Random.Range(0, idleClips.Length)];
+        _audioSource.Play();
     }
 
     void FixedUpdate()
@@ -112,5 +127,9 @@ public class Enemy : MonoBehaviour
     {
         _dead = true;
         _collider.enabled = false;
+
+        if (!deathClip) return;
+        _audioSource.Stop();
+        _audioSource.PlayOneShot(deathClip);
     }
 }
