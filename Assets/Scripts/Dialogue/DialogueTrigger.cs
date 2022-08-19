@@ -1,20 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] bool triggerOnStart;
     [SerializeField] Dialogue dialogue;
 
-    DialogueManager _dialogueManager;
-
-    void Awake()
-    {
-        _dialogueManager = FindObjectOfType<DialogueManager>();
-        if (!_dialogueManager)
-            throw new Exception("Could not find DialogueManager");
-    }
+    [Inject] DialogueManager _dialogueManager;
 
     void Start()
     {

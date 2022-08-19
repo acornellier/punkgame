@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38645481d3d0c8e4cb4361878959bbab
+guid: 30ddf4c13cf2f43e48d9f8e939465b10
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,13 +119,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: zombie2_0
+      name: bouncer_sheet_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 8
+        y: 64
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8aa561f874748cf98f084a506e5727
+      internalID: -364627006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bouncer_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 64
+        width: 16
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97158eb5f8d65415d94f8c5014080472
+      internalID: -1601341838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bouncer_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 8
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c2ed801ec0bf46989390393edcb3968
-      internalID: -896825179
+      spriteID: 3fd553eecd8264f1c9f9d8e0e152c644
+      internalID: -417808919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_1
+      name: bouncer_sheet_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 40
         y: 32
-        width: 32
-        height: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +196,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a8fb11fab8d54aa7a93f59ba1959cd4
-      internalID: -1204924804
+      spriteID: 7d8a73f5491984f37be716980f8e646e
+      internalID: 393663492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_2
+      name: bouncer_sheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 72
+        y: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +217,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 435b595b8f13c45d2b9f06321cd49538
-      internalID: -1457896377
+      spriteID: 23eb65f79731647ffb316ccdd80f461b
+      internalID: 2081390789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_3
+      name: bouncer_sheet_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 104
+        y: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +238,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbc52252b03214527b00869f94150cc9
-      internalID: -911712144
+      spriteID: 5cd3d5e4a110341018bffa278736b02f
+      internalID: -1664045250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_4
+      name: bouncer_sheet_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 136
+        y: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +259,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bba40c9baa0604fd6a13cbd558a48842
-      internalID: 1602182414
+      spriteID: 6201f4e1b12224717b07270b2d3bd1a6
+      internalID: 2107240540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_5
+      name: bouncer_sheet_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
+        x: 168
+        y: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +280,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7529ad7b135243c697d4911eab00ff7
-      internalID: 1368980489
+      spriteID: abb2369151ef34ca6889dd608a4e62f9
+      internalID: -61573583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_6
+      name: bouncer_sheet_8
       rect:
         serializedVersion: 2
-        x: 128
+        x: 8
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ac7b90d4a79c493da33d26331562510
-      internalID: 765155691
+      spriteID: 52f60019e07da429599931fba2859ce3
+      internalID: -305918956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_7
+      name: bouncer_sheet_9
       rect:
         serializedVersion: 2
-        x: 160
+        x: 39
         y: 0
-        width: 32
-        height: 32
+        width: 17
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,20 +322,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be4d8367677734bbbafbbc8cbe457054
-      internalID: -1067596675
+      spriteID: f298ad743cccc4722a6b6ee7146b1a57
+      internalID: 884493659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_8
+      name: bouncer_sheet_10
       rect:
         serializedVersion: 2
-        x: 192
+        x: 70
         y: 0
-        width: 32
-        height: 32
+        width: 19
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,20 +343,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6702f0a28f77e4d5bba95f8b425e3273
-      internalID: -318450987
+      spriteID: 24374f244b52d4bdc98635fb5e123f47
+      internalID: -1505000729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_9
+      name: bouncer_sheet_11
       rect:
         serializedVersion: 2
-        x: 224
+        x: 103
         y: 0
-        width: 32
-        height: 32
+        width: 17
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +364,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e61560f050e443589391c52fa16b6da
-      internalID: -424720726
+      spriteID: 2bd2e1a2cc568481da64fb558b30c337
+      internalID: 964421247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: zombie2_10
+      name: bouncer_sheet_12
       rect:
         serializedVersion: 2
-        x: 256
+        x: 137
         y: 0
-        width: 32
-        height: 32
+        width: 21
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,8 +385,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab4ed874820f847b1bbefc94ac3cbb4d
-      internalID: 923400589
+      spriteID: 84e59b6868ca841b49c7cea3257f466a
+      internalID: -1120556152
       vertices: []
       indices: 
       edges: []
@@ -360,17 +402,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      zombie2_4: 1602182414
-      zombie2_8: -318450987
-      zombie2_3: -911712144
-      zombie2_9: -424720726
-      zombie2_2: -1457896377
-      zombie2_6: 765155691
-      zombie2_0: -896825179
-      zombie2_5: 1368980489
-      zombie2_10: 923400589
-      zombie2_7: -1067596675
-      zombie2_1: -1204924804
+      bouncer_sheet_10: -1505000729
+      bouncer_sheet_11: 964421247
+      bouncer_sheet_1: -1601341838
+      bouncer_sheet_8: -305918956
+      bouncer_sheet_7: -61573583
+      bouncer_sheet_2: -417808919
+      bouncer_sheet_12: -1120556152
+      bouncer_sheet_3: 393663492
+      bouncer_sheet_6: 2107240540
+      bouncer_sheet_5: -1664045250
+      bouncer_sheet_9: 884493659
+      bouncer_sheet_0: -364627006
+      bouncer_sheet_4: 2081390789
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

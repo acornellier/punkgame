@@ -56,9 +56,9 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"m"
 	"move "
 	"scen"
-	"m"
 	"f"
 	"cr"
 	"in"

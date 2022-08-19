@@ -34,9 +34,6 @@ public class Player : MonoBehaviour
 
     readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[8];
 
-    public static Action OnDeath;
-    public static Action OnRespawn;
-
     void Awake()
     {
         _collider = GetComponent<Collider2D>();
@@ -60,12 +57,6 @@ public class Player : MonoBehaviour
         UpdateJumping();
         UpdateDirection();
         UpdateAnimations();
-    }
-
-    public void DisableControlsAndStopAnimancer()
-    {
-        playerActions.DisablePlayerControls();
-        _animancer.Stop();
     }
 
     void OnFootstep()
@@ -121,6 +112,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        D.Log(moveInput, velocity);
         _body.velocity = velocity;
     }
 
@@ -167,7 +159,7 @@ public class Player : MonoBehaviour
 
     void UpdateAnimations()
     {
-        if (!playerActions.actions.Player.enabled)
+        if (isDead)
             return;
 
         if (_isDancing)
@@ -194,7 +186,6 @@ public class Player : MonoBehaviour
         isDead = true;
         if (cleets) cleets.enabled = false;
         playerActions.DisablePlayerControls();
-        OnDeath?.Invoke();
 
         var state = _animancer.Play(animations.die);
         yield return state;
@@ -204,7 +195,6 @@ public class Player : MonoBehaviour
         isDead = false;
         if (cleets) cleets.enabled = true;
         playerActions.EnablePlayerControls();
-        OnRespawn?.Invoke();
 
         Respawn();
     }
