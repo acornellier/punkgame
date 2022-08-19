@@ -112,7 +112,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        D.Log(moveInput, velocity);
         _body.velocity = velocity;
     }
 
