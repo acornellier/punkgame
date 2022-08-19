@@ -4,6 +4,7 @@
 public class Cleets : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] float jumpMultiplier = 0.8f;
 
     Collider2D _collider;
 
@@ -22,6 +23,6 @@ public class Cleets : MonoBehaviour
             return;
 
         enemy.Die();
-        player.Jump(0.5f);
+        player.Jump(jumpMultiplier);
     }
 }

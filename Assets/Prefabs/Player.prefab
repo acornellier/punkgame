@@ -112,7 +112,7 @@ MonoBehaviour:
     deceleration: 50
     jumpForce: 11
     gravityForce: 1.7
-    fallingGravityMultiplier: 2
+    fallingGravityMultiplier: 3
     jumpInputBuffer: 0.1
   animations:
     idle: {fileID: 7400000, guid: 406aff1a5f454244881c793d7a9cc125, type: 2}
@@ -120,7 +120,8 @@ MonoBehaviour:
     jump: {fileID: 7400000, guid: 6cc7d83efe57fbb45bd027ed3884fdf5, type: 2}
     fall: {fileID: 7400000, guid: 9ac4526094031184aaf0afbd7b8c0f66, type: 2}
     land: {fileID: 7400000, guid: 397490f8b7daaea47bf7b67d1dc1305d, type: 2}
-    die: {fileID: 0}
+    die: {fileID: 7400000, guid: 8a9882847ddee944fa3bb10f93314863, type: 2}
+    dance: {fileID: 7400000, guid: b9c5a785f6ef2884d9831d0bf9b8ccfc, type: 2}
 --- !u!212 &1037533104793568243
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -370,3 +371,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1037533104793570319}
+  jumpMultiplier: 0.8

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Animancer;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 [RequireComponent(typeof(Collider2D))]
@@ -18,6 +17,8 @@ public class Player : MonoBehaviour
 
     [Inject] CheckpointManager _checkpointManager;
 
+    [NonSerialized] public bool isDead;
+
     Collider2D _collider;
     Rigidbody2D _body;
     AnimancerComponent _animancer;
@@ -29,10 +30,12 @@ public class Player : MonoBehaviour
     float _jumpingTimestamp = float.NegativeInfinity;
     bool _isFalling;
     float _landTimestamp = float.NegativeInfinity;
-
-    bool _isDead;
+    bool _isDancing;
 
     readonly RaycastHit2D[] _hitBuffer = new RaycastHit2D[8];
+
+    public static Action OnDeath;
+    public static Action OnRespawn;
 
     void Awake()
     {
@@ -50,7 +53,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_isDead) return;
+        if (isDead) return;
 
         UpdateGrounded();
         UpdateRunning();
@@ -149,7 +152,7 @@ public class Player : MonoBehaviour
         _jumpingTimestamp = Time.time;
         _jumpInputTimestamp = 0;
         _body.velocity = new Vector2(_body.velocity.x, 0);
-        _body.AddForce(new Vector2(0, stats.jumpForce), ForceMode2D.Impulse);
+        _body.AddForce(new Vector2(0, stats.jumpForce * multiplier), ForceMode2D.Impulse);
         playerAudio.Jump();
     }
 
@@ -167,7 +170,9 @@ public class Player : MonoBehaviour
         if (!playerActions.actions.Player.enabled)
             return;
 
-        if (_isFalling)
+        if (_isDancing)
+            _animancer.Play(animations.dance);
+        else if (_isFalling)
             _animancer.Play(animations.fall);
         else if (_isJumping)
             _animancer.Play(animations.jump);
@@ -186,25 +191,20 @@ public class Player : MonoBehaviour
 
     IEnumerator CO_Die()
     {
-        _isDead = true;
-        transform.Rotate(0, 0, 90);
-        _collider.enabled = false;
+        isDead = true;
         if (cleets) cleets.enabled = false;
-        _body.bodyType = RigidbodyType2D.Kinematic;
-        _body.constraints = RigidbodyConstraints2D.FreezeAll;
         playerActions.DisablePlayerControls();
-        // var state = _animancer.Play(animations.die);
-        // yield return state;
+        OnDeath?.Invoke();
+
+        var state = _animancer.Play(animations.die);
+        yield return state;
 
         yield return new WaitForSeconds(1);
 
-        _isDead = false;
-        transform.Rotate(0, 0, -90);
-        _collider.enabled = true;
+        isDead = false;
         if (cleets) cleets.enabled = true;
-        _body.bodyType = RigidbodyType2D.Dynamic;
-        _body.constraints = RigidbodyConstraints2D.FreezeRotation;
         playerActions.EnablePlayerControls();
+        OnRespawn?.Invoke();
 
         Respawn();
     }
@@ -212,6 +212,16 @@ public class Player : MonoBehaviour
     public void Respawn()
     {
         transform.position = _checkpointManager.CurrentCheckpoint.position;
+    }
+
+    public void Dance()
+    {
+        _isDancing = true;
+    }
+
+    public void StopDance()
+    {
+        _isDancing = false;
     }
 
     [Serializable]
@@ -237,5 +247,6 @@ public class Player : MonoBehaviour
         public AnimationClip fall;
         public AnimationClip land;
         public AnimationClip die;
+        public AnimationClip dance;
     }
 }

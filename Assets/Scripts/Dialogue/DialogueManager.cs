@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,13 +21,22 @@ public class DialogueManager : MonoBehaviour
     string _currentLine;
     Coroutine _coroutine;
 
+    void Start()
+    {
+        playerActions.actions.Dialogue.Next.performed += OnNextInput;
+    }
+
+    void OnDisable()
+    {
+        playerActions.actions.Dialogue.Next.performed -= OnNextInput;
+    }
+
     public void StartDialogue(Dialogue dialogue)
     {
         _currentDialogue = dialogue;
 
         playerActions.DisablePlayerControls();
         playerActions.actions.Dialogue.Enable();
-        playerActions.actions.Dialogue.Next.performed += OnNextInput;
 
         wrapper.SetActive(true);
         title.text = dialogue.name;

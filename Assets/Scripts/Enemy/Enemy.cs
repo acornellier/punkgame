@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using Animancer;
+using UnityEngine;
 
+[RequireComponent(typeof(AnimancerComponent))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Enemy : MonoBehaviour
@@ -8,8 +10,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool startFlipped = true;
     [SerializeField] Transform groundCheckPoint;
 
+    [SerializeField] AnimationClip walk;
+    [SerializeField] AnimationClip die;
+
+    AnimancerComponent _animancer;
     Collider2D _collider;
     Rigidbody2D _body;
+    Player _player;
     LayerMask _groundMask;
     ContactFilter2D _collisionFilter;
 
@@ -21,8 +28,10 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
+        _animancer = GetComponent<AnimancerComponent>();
         _collider = GetComponent<Collider2D>();
         _body = GetComponent<Rigidbody2D>();
+        _player = FindObjectOfType<Player>();
         _groundMask = LayerMask.GetMask("Collision");
         _collisionFilter.useLayerMask = true;
         _collisionFilter.layerMask = LayerMask.GetMask("Collision", "Enemy");
@@ -37,11 +46,19 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_player.isDead)
+        {
+            _body.velocity = Vector2.zero;
+            return;
+        }
+
         if (_dead)
         {
             _body.bodyType = RigidbodyType2D.Kinematic;
             _body.velocity = 2 * speed * Vector2.down;
             transform.Rotate(0, 0, 10);
+            if (die)
+                _animancer.Play(die);
             return;
         }
 
@@ -50,6 +67,8 @@ public class Enemy : MonoBehaviour
         var velocity = _body.velocity;
         velocity.x = _direction * speed;
         _body.velocity = velocity;
+        if (walk)
+            _animancer.Play(walk);
     }
 
     void OnCollisionEnter2D(Collision2D col)

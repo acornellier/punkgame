@@ -52,7 +52,7 @@ public class DestructibleTile : MonoBehaviour
 
         _collider.enabled = false;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(respawnTime);
 
         color.a = 1;
         _renderer.color = color;

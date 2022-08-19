@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 38645481d3d0c8e4cb4361878959bbab, type: 3}
+    - target: {fileID: 1451183300731828887, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
+      propertyPath: die
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451183300731828887, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
+      propertyPath: walk
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1451183300731828891, guid: 6739da4cfa7df054d9f23b948d29ba46, type: 3}
       propertyPath: m_Name
       value: ZombieFemale

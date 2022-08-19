@@ -4,19 +4,21 @@ public class Parallax : MonoBehaviour
 {
     [SerializeField] float parralaxEffect;
 
-    float _startPos;
+    Vector3 _cameraStartPos;
+    Vector3 _startPos;
 
     void Start()
     {
-        _startPos = transform.position.x;
+        _cameraStartPos = Camera.main.transform.position;
+        _startPos = transform.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        var dist = Camera.main.transform.position.x * parralaxEffect;
+        var distFromStart = Camera.main.transform.position - _cameraStartPos;
         transform.position = new Vector3(
-            _startPos + dist,
-            Camera.main.transform.position.y,
+            _startPos.x + distFromStart.x * parralaxEffect,
+            _startPos.y + distFromStart.y,
             transform.position.z
         );
     }
